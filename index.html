@@ -3,77 +3,187 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мое Портфолио</title>
+    <title>MULTI-TOOL</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Шапка и навигация -->
-    <header>
-        <div class="container">
-            <a href="#" class="logo">DEV<span>PORT</span></a>
-            <nav>
-                <button class="menu-toggle" aria-label="Открыть меню"><i class="fas fa-bars"></i></button>
-                <ul class="nav-list">
-                    <li><a href="#home">Главная</a></li>
-                    <li><a href="#about">Обо мне</a></li>
-                    <li><a href="#projects">Проекты</a></li>
-                    <li><a href="#contact">Контакты</a></li>
-                </ul>
-            </nav>
+    <!-- Анимированный фон -->
+    <canvas id="snow-canvas"></canvas>
+
+    <!-- Загрузочный экран -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-logo">
+                <h1>MULTI-<span>TOOL</span></h1>
+            </div>
+            <div class="loading-spinner"></div>
+            <p>Загрузка инструментов...</p>
         </div>
-    </header>
+    </div>
 
-    <main>
-        <!-- Герой-секция -->
-        <section id="home" class="hero">
+    <!-- Основной контент -->
+    <div id="main-content" class="main-content">
+        <!-- Шапка -->
+        <header>
             <div class="container">
-                <h1>Привет, я <span class="highlight">Разработчик</span></h1>
-                <p>Здесь я собираю свои лучшие проекты. Чистый код, ясные решения.</p>
+                <a href="#" class="logo">MULTI-<span>TOOL</span></a>
+                <nav>
+                    <button class="menu-toggle" aria-label="Открыть меню">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <ul class="nav-list">
+                        <li><a href="#home" class="nav-link">Главная</a></li>
+                        <li><a href="#projects" class="nav-link">Проекты</a></li>
+                        <li><a href="#developers" class="nav-link">Разработчики</a></li>
+                    </ul>
+                </nav>
             </div>
-        </section>
+        </header>
 
-        <!-- Секция "Обо мне" -->
-        <section id="about" class="about">
-            <div class="container">
-                <h2>Обо мне</h2>
-                <p>Я занимаюсь разработкой и создаю проекты, которые решают реальные задачи. Этот сайт — витрина моей работы. Все сделано в минималистичном черно-сером стиле.</p>
-            </div>
-        </section>
+        <main>
+            <!-- Герой-секция -->
+            <section id="home" class="hero">
+                <div class="container">
+                    <h1>MULTI-<span class="highlight">TOOL</span></h1>
+                    <p class="subtitle">Коллекция инструментов от MOFARK-X и X-Sanutuy</p>
+                    <div class="stats">
+                        <div class="stat">
+                            <span class="stat-number" id="total-projects">0</span>
+                            <span class="stat-label">Проектов</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">2</span>
+                            <span class="stat-label">Разработчика</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number" id="active-updates">0</span>
+                            <span class="stat-label">Активных обновлений</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-        <!-- Секция с проектами -->
-        <section id="projects" class="projects">
+            <!-- Фильтры проектов -->
+            <section id="filters" class="filters-section">
+                <div class="container">
+                    <h2><i class="fas fa-filter"></i> Фильтры проектов</h2>
+                    <div class="filters-grid">
+                        <div class="filter-group">
+                            <label for="search"><i class="fas fa-search"></i> Поиск по названию</label>
+                            <input type="text" id="search" placeholder="Введите название...">
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label><i class="fas fa-user"></i> Разработчик</label>
+                            <div class="filter-options">
+                                <button class="filter-btn active" data-filter="all">Все</button>
+                                <button class="filter-btn" data-filter="MOFARK-X">MOFARK-X</button>
+                                <button class="filter-btn" data-filter="X-Sanutuy">X-Sanutuy</button>
+                            </div>
+                        </div>
+
+                        <div class="filter-group">
+                            <label><i class="fas fa-tag"></i> Статус</label>
+                            <div class="filter-options">
+                                <button class="filter-btn active" data-filter="all">Все</button>
+                                <button class="filter-btn" data-filter="release">Релиз</button>
+                                <button class="filter-btn" data-filter="beta">Beta</button>
+                                <button class="filter-btn" data-filter="alpha">Alpha</button>
+                            </div>
+                        </div>
+
+                        <div class="filter-group">
+                            <label><i class="fas fa-mobile-alt"></i> Устройства</label>
+                            <div class="filter-options">
+                                <button class="filter-btn active" data-filter="all">Все</button>
+                                <button class="filter-btn" data-filter="android">Android</button>
+                                <button class="filter-btn" data-filter="ios">iOS</button>
+                                <button class="filter-btn" data-filter="windows">Windows</button>
+                                <button class="filter-btn" data-filter="web">Web</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button id="reset-filters" class="reset-btn">
+                        <i class="fas fa-redo"></i> Сбросить фильтры
+                    </button>
+                </div>
+            </section>
+
+            <!-- Проекты -->
+            <section id="projects" class="projects">
+                <div class="container">
+                    <h2><i class="fas fa-tools"></i> Наши инструменты</h2>
+                    <div class="projects-container" id="projects-container">
+                        <!-- Проекты загружаются через JS -->
+                    </div>
+                    <div id="no-projects" class="no-projects" style="display: none;">
+                        <i class="fas fa-search"></i>
+                        <h3>Проекты не найдены</h3>
+                        <p>Попробуйте изменить параметры фильтрации</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Разработчики -->
+            <section id="developers" class="developers">
+                <div class="container">
+                    <h2><i class="fas fa-code"></i> Разработчики</h2>
+                    <div class="developers-grid">
+                        <div class="developer-card">
+                            <div class="developer-avatar">M</div>
+                            <h3>MOFARK-X</h3>
+                            <p class="developer-role">Главный разработчик</p>
+                            <p class="developer-bio">Создатель сложных систем и архитектуры проектов</p>
+                            <div class="developer-stats">
+                                <span><i class="fas fa-project-diagram"></i> Проектов: <span id="mofark-count">0</span></span>
+                            </div>
+                        </div>
+                        
+                        <div class="developer-card">
+                            <div class="developer-avatar">X</div>
+                            <h3>X-Sanutuy</h3>
+                            <p class="developer-role">Разработчик UI/UX</p>
+                            <p class="developer-bio">Специалист по интерфейсам и пользовательскому опыту</p>
+                            <div class="developer-stats">
+                                <span><i class="fas fa-project-diagram"></i> Проектов: <span id="sanutuy-count">0</span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Подвал -->
+        <footer>
             <div class="container">
-                <h2>Мои проекты</h2>
-                <div class="projects-grid" id="projects-container">
-                    <!-- Проекты будут загружены сюда через JavaScript из projects.json -->
-                    <p class="loading"><i class="fas fa-spinner fa-spin"></i> Загружаю проекты...</p>
+                <div class="footer-content">
+                    <div class="footer-logo">
+                        <h3>MULTI-<span>TOOL</span></h3>
+                        <p>Только для разработки и тестирования</p>
+                    </div>
+                    <div class="footer-info">
+                        <p>© <span id="current-year">2024</span> MULTI-TOOL | Только для MOFARK-X и X-Sanutuy</p>
+                        <p class="warning"><i class="fas fa-lock"></i> Доступ только для владельцев сайта</p>
+                    </div>
                 </div>
             </div>
-        </section>
+        </footer>
+    </div>
 
-        <!-- Секция "Контакты" -->
-        <section id="contact" class="contact">
-            <div class="container">
-                <h2>Связаться</h2>
-                <p>Если хотите обсудить проект — напишите мне.</p>
-                <div class="contact-links">
-                    <a href="mailto:your-email@example.com"><i class="fas fa-envelope"></i> Email</a>
-                    <a href="https://github.com/yourusername" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-                </div>
+    <!-- Модальное окно для проекта -->
+    <div id="project-modal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <div class="modal-body" id="modal-body">
+                <!-- Контент загружается через JS -->
             </div>
-        </section>
-    </main>
-
-    <!-- Подвал -->
-    <footer>
-        <div class="container">
-            <p>&copy; <span id="current-year">2024</span> Мое Портфолио. Все права защищены.</p>
-            <p class="small">Только я могу добавлять проекты.</p>
         </div>
-    </footer>
+    </div>
 
     <!-- Подключаем скрипты -->
+    <script src="snow.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
