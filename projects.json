@@ -1,0 +1,23 @@
+[
+    {
+        "title": "Первый проект",
+        "description": "Краткое описание моего первого проекта. Что он делает и какие технологии использованы.",
+        "image": "assets/project1.jpg",
+        "demoUrl": "https://example.com",
+        "githubUrl": "https://github.com/yourusername/project1"
+    },
+    {
+        "title": "Второй проект",
+        "description": "Описание второго проекта. Можно писать более подробно.",
+        "image": "assets/project2.jpg",
+        "demoUrl": "",
+        "githubUrl": "https://github.com/yourusername/project2"
+    },
+    {
+        "title": "Третий проект",
+        "description": "Еще один интересный проект, который я реализовал.",
+        "image": "assets/project3.jpg",
+        "demoUrl": "https://example3.com",
+        "githubUrl": ""
+    }
+]
